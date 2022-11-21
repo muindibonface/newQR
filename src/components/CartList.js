@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {increaseItem, decreaseItem, deleteItem, emptyArray} from '../User'
 import {FaTrash} from 'react-icons/fa'
@@ -14,28 +14,48 @@ console.log(sum)
 
 const dispatch = useDispatch()
 const navigate = useNavigate()
+
+const [orderStatus, setOrderStatus] = useState({
+    res: null,
+    loading: false,
+    error: null
+})
+const [roomOrTable_number, setRoomOrTable_number] = useState('')
+const [hideNum, setHideNum] = useState(false)
 const myOrder =async()=>{
-    // const formData = new FormData();
-    // itemList.forEach(list => {
-    //     formData.append('name', list.name)
-    //     formData.append('price', list.price)
-    //     formData.append('qts', list.many)
-    //     console.log(`${list.price} and ${list.name} and ${list.many}`)
-    // });
-    // const res = await axios.post('http://localhost/sendMessage', )
-    // console.log(res.data)
-    try {
-        let payload = {itemList}
-        let res = await axios({
-            url: 'http://localhost:80/sendMessage',
-            method: 'post',
-            data: payload
-        })
-    alert(res.data)
-    dispatch(emptyArray())
-    navigate('/')
-    } catch (error) {
-        console.log(error)
+
+    if (roomOrTable_number === '') {
+        setHideNum(true)
+    } else {
+        if (roomOrTable_number !== undefined && roomOrTable_number !== '') {
+            setOrderStatus({
+                res: null,
+                loading: true,
+                error: null
+            })
+            try {
+                let payload = {itemList, roomOrTable_number}
+                let res = await axios({
+                    url: 'https://menu-menu.vercel.app/sendMessage',
+                    method: 'post',
+                    data: payload
+                })
+
+            setOrderStatus({
+                res: res.data,
+                loading: false,
+                error: null
+            })
+            setHideNum(false)
+
+            dispatch(emptyArray())
+
+            setTimeout(() =>  navigate('/') , 1500);
+            } catch (error) {
+                alert(error)
+            }
+        }
+
     }
 }
 
@@ -66,15 +86,25 @@ const myOrder =async()=>{
         }
        
         
-       { itemList.length === 0 && <h1 className='myH1' >No Order yet</h1> }
+       { itemList.length === 0 && <h1 className='myH1' > { orderStatus.res !== null ? orderStatus.res : 'No Order yet' }</h1> }
 
 
         {
             itemList.length > 0 &&  (
                 <div className='submit'>
-                    <div className='subSubmit' onClick={myOrder} >order</div>
+                    <div className='subSubmit' onClick={myOrder} >{ orderStatus.loading === false ? 'Place Order' : 'Loading' }</div>
                 </div>
 
+            )
+        }
+
+
+        {
+            hideNum && (
+                <div className='room_table_number'>
+                    <p>Room or Table number</p>
+                    <input type='text' placeholder='#...' onChange={(e)=> setRoomOrTable_number(e.target.value)} />
+                </div>
             )
         }
         

@@ -42,9 +42,9 @@ const TopImg = () => {
       try {
         setImageList({
           image1: await getDownloadURL(ref(storage, `ads/1`)),
-          image2: await getDownloadURL(ref(storage, `ads/2`)),
-          image3: await getDownloadURL(ref(storage, `ads/3`)),
-          image4: await getDownloadURL(ref(storage, `ads/4`))
+          // image2: await getDownloadURL(ref(storage, `ads/2`)),
+          // image3: await getDownloadURL(ref(storage, `ads/3`)),
+          // image4: await getDownloadURL(ref(storage, `ads/4`))
         })
       } catch (error) {
         console.log(error)

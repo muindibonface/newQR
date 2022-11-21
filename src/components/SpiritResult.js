@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {FaEdit, FaTimes} from "react-icons/fa"
 import {auth,db} from "../firebase"
 import {deleteDoc, updateDoc, doc} from "firebase/firestore"
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {addItems} from '../User'
 
 const SpiritResult = ({id, name, price}) => {
@@ -32,12 +32,12 @@ const SpiritResult = ({id, name, price}) => {
     }
 
     //  open and close font awesome
-    const [show, setShow] = useState(false);
-    const showFontAwesomes = () => {
-        setShow(setSho=> {
-                return !setSho
-        })
-    }
+    // const [show, setShow] = useState(false);
+    // const showFontAwesomes = () => {
+    //     setShow(setSho=> {
+    //             return !setSho
+    //     })
+    // }
 
     const dispatch = useDispatch()
     const [getAlert, setGetAlert] = useState(null)
@@ -53,9 +53,9 @@ const SpiritResult = ({id, name, price}) => {
 
   return (
     <div>
-        <div onDoubleClick={showFontAwesomes} className='resultFromFirebase'>
+        <div className='resultFromFirebase'>
             <p style={{width: '150px'}} >{name}</p>
-            { !auth.currentUser && <h1 onClick={()=> onGet(name, price) } >get</h1> }
+            { !auth.currentUser && <h1 onClick={()=> onGet(name, price) } >order</h1> }
             <span>{price}</span>
 
             {auth.currentUser && (

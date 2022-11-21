@@ -4,11 +4,14 @@ import {onSnapshot, query, collection, Timestamp, orderBy, limit, addDoc} from "
 import img1 from "../image/img1.jpg"
 import KitchenResult from './KitchenResult'
 import {useNavigate} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 const Kitchen = () => {
   const navigate = useNavigate()
 
   const [kitchen, setKitchen] = useState([])
+
+  const itemList = useSelector((state)=> state.users.value)
 
 
   useEffect(()=>{
@@ -61,7 +64,7 @@ const Kitchen = () => {
           })
         }
 
-    <div className='orderlist' onClick={()=> navigate('/cart')} >List</div>
+{ itemList.length > 0 && <div className='orderlist' onClick={()=> navigate('/cart')} >List</div> }
     </div>
   )
 }

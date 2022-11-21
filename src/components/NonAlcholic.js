@@ -4,11 +4,14 @@ import {onSnapshot, query, collection, Timestamp, orderBy, limit, addDoc} from "
 import img1 from "../image/download.jpg"
 import NonAlcoholicResult from './NonAlcoholicResult';
 import {useNavigate} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 const NonAlcholic = () => {
 
   const [nonAlcohol, setNonAlcohol] = useState([])
   const navigate = useNavigate()
+
+  const itemList = useSelector((state)=> state.users.value)
 
   useEffect(()=>{
     let q = query(collection(db, 'nonAlcohol'), limit(50), orderBy('creatAt'));
@@ -63,7 +66,7 @@ const NonAlcholic = () => {
             return <NonAlcoholicResult key={id} id={id} price={price} name={name}/>
           })
         }
-        <div className='orderlist' onClick={()=> navigate('/cart')} >List</div>
+         { itemList.length > 0 && <div className='orderlist' onClick={()=> navigate('/cart')} >List</div> }
     </div>
   )
 }

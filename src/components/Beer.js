@@ -4,12 +4,15 @@ import {onSnapshot, query, collection, Timestamp, orderBy, limit, addDoc} from "
 import img1 from "../image/beer.gif"
 import BeerResult from './BeerResult';
 import {useNavigate} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 
 const Beer = () => {
 
   const [beer, setBeer] = useState([])
   const navigate = useNavigate()
+
+  const itemList = useSelector((state)=> state.users.value)
 
 
   useEffect(()=>{
@@ -65,8 +68,10 @@ const Beer = () => {
             return <BeerResult key={id} id={id} price={price} name={name}  />
           })
         }
+        { itemList.length > 0 && <div className='orderlist' onClick={()=> navigate('/cart')} >List</div> }
 
-        <div className='orderlist' onClick={()=> navigate('/cart')} >List</div>
+
+        
     </div>
   )
 }

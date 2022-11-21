@@ -32,12 +32,12 @@ const NonAlcoholicResult = ({id, name, price}) => {
     }
 
     //  open and close font awesome
-    const [show, setShow] = useState(false);
-    const showFontAwesomes = () => {
-        setShow(setSho=> {
-                return !setSho
-        })
-    }
+    // const [show, setShow] = useState(false);
+    // const showFontAwesomes = () => {
+    //     setShow(setSho=> {
+    //             return !setSho
+    //     })
+    // }
 
     const dispatch = useDispatch()
     const [getAlert, setGetAlert] = useState(null)
@@ -52,9 +52,9 @@ const NonAlcoholicResult = ({id, name, price}) => {
 
   return (
     <div>
-        <div onDoubleClick={showFontAwesomes} className='resultFromFirebase'>
+        <div className='resultFromFirebase'>
             <p>{name}</p>
-            { !auth.currentUser && <h1 onClick={()=> onGet(name, price) } >get</h1> }
+            { !auth.currentUser && <h1 onClick={()=> onGet(name, price) } >order</h1> }
             <span>{price}</span>
 
             {auth.currentUser && (

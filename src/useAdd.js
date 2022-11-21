@@ -1,9 +1,11 @@
+
+
 import { useState } from "react"
 import { useDispatch} from 'react-redux'
-import {addItems} from './User'
+import { addItems } from './User'
 
 
-export const useAlert=()=> {
+export const useAdd = () => {
 
     const [getAlert, setGetAlert] = useState(null)
     const dispatch = useDispatch()

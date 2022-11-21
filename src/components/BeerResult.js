@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import {FaEdit, FaTimes, FaCartPlus} from "react-icons/fa"
+import {FaEdit, FaTimes} from "react-icons/fa"
 import {auth,db} from "../firebase"
 import {deleteDoc, updateDoc, doc} from "firebase/firestore"
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {addItems} from '../User'
+
 
 const BeerResult = ({id, name, price}) => {
 
@@ -31,6 +32,7 @@ const BeerResult = ({id, name, price}) => {
         })
     }
 
+
     const dispatch = useDispatch()
     const [getAlert, setGetAlert] = useState(null)
     const onGet =(name, price)=> {
@@ -38,7 +40,7 @@ const BeerResult = ({id, name, price}) => {
         setGetAlert('added to list')
         setTimeout(() => {
             setGetAlert(null)
-        }, 1000);
+        }, 500);
     }
     
     
@@ -49,7 +51,7 @@ const BeerResult = ({id, name, price}) => {
     <div>
         <div className='resultFromFirebase'>
             <p>{name}</p>
-            { !auth.currentUser && <h1 onClick={()=> onGet(name, price) } >get</h1> }
+            { !auth.currentUser && <h1 onClick={()=> onGet(name, price) } >order</h1> }
             <span>{price}</span>
             { auth.currentUser && (
                 <div className='fontAwesome'>

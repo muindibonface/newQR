@@ -4,11 +4,14 @@ import {onSnapshot, query, collection, Timestamp, orderBy, limit, addDoc} from "
 import img1 from "../image/drink.jpg"
 import SpiritResult from './SpiritResult';
 import {useNavigate} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 const Spirit = () => {
 
   const [wine, setWine] = useState([])
   const navigate = useNavigate()
+
+  const itemList = useSelector((state)=> state.users.value)
 
 
   useEffect(()=>{
@@ -60,7 +63,7 @@ const Spirit = () => {
             return <SpiritResult key={id} id={id} price={price} name={name}/>
           })
         }
-        <div className='orderlist' onClick={()=> navigate('/cart')} >List</div>
+         { itemList.length > 0 && <div className='orderlist' onClick={()=> navigate('/cart')} >List</div> }
     </div>
   )
 }
