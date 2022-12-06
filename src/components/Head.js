@@ -8,7 +8,7 @@ const Head = () => {
     <div>
         <h1 onDoubleClick={()=> setTog(to => !to) }
           style={{border: ' 1px solid #ffe6e6',fontSize: '20px', cursor: 'pointer' ,color: 'black', marginTop: '0', padding: '10px', textAlign: 'center'}}>
-            AMBIANCE
+            HOTEL/LOUNGE
         </h1>
         <p onClick={()=> navigate('/sign-in')}
           style={{position: 'absolute', cursor: 'pointer',top: '10px', right: '10px', display: tog ? 'block': 'none'}} >

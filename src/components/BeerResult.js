@@ -55,7 +55,7 @@ const BeerResult = ({id, name, price}) => {
             <span>{price}</span>
             { auth.currentUser && (
                 <div className='fontAwesome'>
-                    <FaEdit onClick={onClickFaedit} style={{color: 'white', fontSize: '20px'}}/>
+                    <FaEdit onClick={onClickFaedit} style={{color: 'green', fontSize: '20px'}}/>
                     <FaTimes onClick={()=>deleteItem(id) } style={{color: 'red', fontSize: '20px'}}/>
                 </div>
             ) }

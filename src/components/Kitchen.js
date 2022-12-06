@@ -43,7 +43,7 @@ const Kitchen = () => {
     setPrice('');
   }
   return (
-    <div>
+    <div style={{margin: '0 0 60px 0'}} >
       <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <img style={{width: '100%', margin: '10px'}} src={img1} alt='img' />
       </div>
@@ -64,7 +64,7 @@ const Kitchen = () => {
           })
         }
 
-{ itemList.length > 0 && <div className='orderlist' onClick={()=> navigate('/cart')} >List</div> }
+{ itemList.length > 0 && <div className='orderlist' onClick={()=> navigate('/cart')} >OrderList</div> }
     </div>
   )
 }

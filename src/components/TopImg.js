@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import ImageSlider, { Slide } from "react-auto-image-slider";
-import {db, auth, storage} from "../firebase";
-import {signInWithEmailAndPassword, signOut} from "firebase/auth"
+
+import {storage} from "../firebase";
 import {getDownloadURL, ref, uploadBytes} from 'firebase/storage'
 import myImage from "../image/whatsapp.jpg"
 

@@ -48,7 +48,8 @@ img {
     display: flex;
     justify-content: left;
     align-items: center;
-    background-color: #f2f2f2;
+    background-color: white;
+    box-shadow: 5px 10px 8px 10px #ffe6e6;
     position: relative;
     margin: 10px;
     padding: 0 20px;
@@ -56,24 +57,25 @@ img {
     width: 80vw;
 }
 .resultFromFirebase p {
-    color: #333333;
+    color: #ff0000;
     text-transform: uppercase;
     font-size: 14px;
 }
 .resultFromFirebase h1 {
-    color: #f2f2f2;
-    background-color: #332b00;
+    color: white;
+    background-color: #ff0000;
     /* margin: 0 20px; */
     top: 4px;
     position: absolute;
     right: 31%;
+    cursor: pointer;
     
     text-transform: uppercase;
     padding: 5px;
     font-size: 10px;
 }
 .resultFromFirebase span {
-    color: #000000;
+    color: #4d0000;
     position: absolute;
     right: 3%;
 }
@@ -101,8 +103,8 @@ form button {
     transform: translate(-50%, -50%);
     height: 90vh;
     width: 90%;
-    background-color: #332b00;
-    color: #f2f2f2;
+    background-color: #ffe6e6;
+    color: red;
     z-index: 2;
 
 }
@@ -250,7 +252,7 @@ form button {
 
 .orderlist {
     position: fixed;
-    background-color: #000000;
+    background-color: #ff0000;
     color: #f2f2f2;
     padding: 10px;
     border-radius: 10px;
@@ -292,7 +294,7 @@ form button {
     margin-top: -30px;
 }.edit-many p {
     padding: 10px 5px;
-    color: #332b00;
+    color: gray;
     font-size: 30px;
 }
 .trash {

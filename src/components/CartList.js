@@ -9,8 +9,7 @@ const CartList = () => {
 
 
 const itemList = useSelector((state)=> state.users.value)
-let sum = itemList.reduce((total, num)=> total + num.price, 0 )
-console.log(sum)
+
 
 const dispatch = useDispatch()
 const navigate = useNavigate()
@@ -41,22 +40,34 @@ const myOrder =async()=>{
                     data: payload
                 })
 
-            setOrderStatus({
-                res: res.data,
-                loading: false,
-                error: null
-            })
-            setHideNum(false)
+                setOrderStatus({
+                    res: res.data,
+                    loading: false,
+                    error: null
+                })
+                setHideNum(false)
 
-            dispatch(emptyArray())
+                dispatch(emptyArray())
 
-            setTimeout(() =>  navigate('/') , 1500);
+                setTimeout(() =>  navigate('/') , 1500);
             } catch (error) {
                 alert(error)
+                setOrderStatus({
+                    res: 'Error sending your order , Please try again',
+                    loading: false,
+                    error: null
+                })
+                setTimeout(() =>  navigate('/') , 1500);
             }
         }
 
     }
+}
+
+try {
+    
+} catch (error) {
+    
 }
 
 
@@ -92,7 +103,7 @@ const myOrder =async()=>{
         {
             itemList.length > 0 &&  (
                 <div className='submit'>
-                    <div className='subSubmit' onClick={myOrder} >{ orderStatus.loading === false ? 'Place Order' : 'Loading' }</div>
+                    <div className='subSubmit' onClick={myOrder} >{ orderStatus.loading === false ? 'Place Order' : 'Loading...' }</div>
                 </div>
 
             )

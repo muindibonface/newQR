@@ -46,9 +46,9 @@ const Beer = () => {
 
 
   return (
-    <div>
+    <div style={{margin: '0 0 60px 0'}} >
       <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        <img style={{width: '100%', height: '35vh', margin: ' 0 0 60px 0 '}} src={img1} alt='img' />
+        <img style={{width: '100%', height: '35vh', margin: ' 0 0 60px 0 '}} src='./img/photo.jpg' alt='img' />
       </div>
 
       {
@@ -64,11 +64,14 @@ const Beer = () => {
       }
 
         {
-          beer.map(({id, price, name}) => {
-            return <BeerResult key={id} id={id} price={price} name={name}  />
-          })
+          beer.length < 0 ? <img src='./img/loading.gif' alt='loading'/> : (
+            beer.map(({id, price, name}) => {
+              return <BeerResult key={id} id={id} price={price} name={name}  />
+            })
+          )
+
         }
-        { itemList.length > 0 && <div className='orderlist' onClick={()=> navigate('/cart')} >List</div> }
+        { itemList.length > 0 && <div className='orderlist' onClick={()=> navigate('/cart')} >Order List</div> }
 
 
         
