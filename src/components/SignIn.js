@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import {db, auth, storage} from "../firebase";
+import React, { useState } from 'react'
+import { auth, storage} from "../firebase";
 import {signInWithEmailAndPassword, signOut} from "firebase/auth"
-import {getDownloadURL, ref, uploadBytes} from 'firebase/storage'
+import { ref, uploadBytes} from 'firebase/storage'
 import {useNavigate} from "react-router-dom"
 import { FaSignOutAlt } from 'react-icons/fa';
 

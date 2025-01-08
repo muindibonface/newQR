@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {auth,db} from "../firebase";
 import {onSnapshot, query, collection, Timestamp, orderBy, limit, addDoc} from "firebase/firestore"
-import img1 from "../image/beer.gif"
+//import img1 from "../image/beer.gif"
 import BeerResult from './BeerResult';
 import {useNavigate} from 'react-router-dom'
 import {useSelector} from 'react-redux'
